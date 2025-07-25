@@ -1,0 +1,15 @@
+Django
+django-split-settings
+django-templated-mail
+djangorestframework
+djangorestframework-simplejwt
+djoser
+Jinja2
+pillow
+python-dotenv
+python3-openid
+requests
+requests-oauthlib
+psycopg2-binary
+django-filter
+flake8

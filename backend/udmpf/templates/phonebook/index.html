@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Справочник
+{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Должность</th>
+                    <th>фамилия</th>
+                    <th>имя</th>
+                    <th>отчество</th>
+                    <th>номер</th>
+                    <th>мобильный</th>
+                    <th>почта</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for subdivision in subdivisions %}
+                <tr>
+                   <th align colspan="7">
+                       <h2>{{ subdivision }}</h2>
+                   </th>
+                </tr>
+            {% for kontakt in kontakts %}
+            {% if kontakt.subdivision == subdivision %}
+            {% for department in departments %}
+            {% if kontakt.department == department %}
+                <tr>
+                    <th align colspan="7">
+                        <h3>{{ department }}</h3>
+                    </th>
+                </tr>
+            {% endif %}
+            {% endfor %}
+                <tr>
+                    <td>{{ kontakt.job_title }}</td>
+                    <td>{{ kontakt.last_name }}</td>
+                    <td>{{ kontakt.name }}</td>
+                    <td>{{ kontakt.s_name }}</td>
+                    <td>{{ kontakt.ip_number }}</td>
+                    <td>{{ kontakt.phone_number }}</td>
+                    <td>{{ kontakt.e_mail }}</td>
+                </tr>
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

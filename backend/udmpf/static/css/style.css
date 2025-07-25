@@ -1,0 +1,61 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial sans-serif;
+}
+
+.header {
+    display: flex;
+    background-color: orange;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    height: 10rem;
+    text-transform: uppercase;
+}
+
+.card {
+    margin: 1rem 20%;
+    border: 1px solid;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+}
+
+.kontakt {
+    display: flex;
+    margin: 1rem 0;
+    align-item: center;
+    justify-content: center;
+}
+
+.table {
+    width: 100%;
+    margin: 2rem 2rem;
+    text-align: center;
+    border-spacing: 0;
+}
+
+.table thead {
+    font-size: 18px;
+    text-transform: uppercase;
+    background-color: orange;
+    color: white;
+}
+
+.container_search {
+    display: flex;
+    justify-content: center;
+    margin: 3rem 0 0;
+}
+
+input.text {
+    width: 35em;
+    font-size: 20px;
+}
+
+button.search {
+    width: 9rem;
+    font-size: 20px;
+
+}
