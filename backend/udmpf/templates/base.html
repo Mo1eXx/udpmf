@@ -13,15 +13,18 @@
     </head>
 
     <body>
-    {% include "includes/header.html" %}
-    <main>
-        <div class="container_search">
-            {% include "includes/search.html" %}
+        <div class="page-wrapper">
+          {% include "includes/header.html" %}
+          <main class="content">
+            <div class="container_search">
+              {% include "includes/search.html" %}
+            </div>
+            <div>
+              {% block content %}{% endblock %}
+            </div>
+          </main>
+          {% include "includes/footer.html" %}
+          <script src="{% static 'js/search.js' %}"></script>
         </div>
-        <div>
-            {% block content %}{% endblock %}
-        </div>
-    </main>
-    {% include "includes/footer.html" %}
     </body>
 </html>

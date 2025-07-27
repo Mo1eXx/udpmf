@@ -4,6 +4,17 @@
     font-family: Arial sans-serif;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 .header {
     display: flex;
     background-color: orange;
@@ -20,6 +31,12 @@
     border-radius: 8px;
     display: flex;
     justify-content: center;
+    background-color: white;
+}
+
+.content {
+    flex: 1;
+    background-color: rgb(255 251 219 / .5);
 }
 
 .kontakt {
@@ -59,3 +76,44 @@ button.search {
     font-size: 20px;
 
 }
+
+.subdivision, .department {
+    text-transform: capitalize;
+}
+
+.department {
+    font-weight: 600;
+
+}
+
+.footer {
+    background-color: orange;
+    text-transform: capitalize;
+}
+
+.table th, .table td {
+    padding: 6px; /* отступы для читаемости */
+    white-space: normal; /* разрешить перенос строк */
+    word-break: break-word; /* переносить длинные слова */
+}
+
+.capitalize {
+    color: rgb(60 60 60);
+    text-transform: capitalize;
+}
+
+.e_mail {
+    color: blue;
+    text-transform: normal;
+}
+
+tr.subdivision-row th {
+  border-bottom: 3px solid #f90;
+  padding-bottom: 8px;
+}
+
+tr.department-row th {
+  border-bottom: 2px solid #ffa500;
+  padding-bottom: 4px;
+}
+

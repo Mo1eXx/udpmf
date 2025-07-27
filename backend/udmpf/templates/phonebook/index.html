@@ -6,7 +6,7 @@
 
 {% block content %}
     <div class="card">
-        <table class="table">
+        <table id="phonebookTable" class="table">
             <thead>
                 <tr>
                     <th>Должность</th>
@@ -21,21 +21,20 @@
             <tbody>
             {% for subdivision in subdivisions %}
                 <tr>
-                   <th align colspan="7">
-                       <h2>{{ subdivision }}</h2>
+                   <th align colspan="8">
+                       <h2 class="subdivision">{{ subdivision }}</h2>
                    </th>
                 </tr>
-            {% for kontakt in kontakts %}
-            {% if kontakt.subdivision == subdivision %}
             {% for department in departments %}
+            {% for kontakt in kontakts %}
+            <!--{% if kontakt.subdivision == subdivision %}-->
             {% if kontakt.department == department %}
                 <tr>
-                    <th align colspan="7">
-                        <h3>{{ department }}</h3>
+                    <th align colspan="8">
+                        <h3 class="department">{{ department }}</h3>
                     </th>
                 </tr>
             {% endif %}
-            {% endfor %}
                 <tr>
                     <td>{{ kontakt.job_title }}</td>
                     <td>{{ kontakt.last_name }}</td>
@@ -45,7 +44,8 @@
                     <td>{{ kontakt.phone_number }}</td>
                     <td>{{ kontakt.e_mail }}</td>
                 </tr>
-            {% endif %}
+            <!--{% endif %}-->
+            {% endfor %}
             {% endfor %}
             {% endfor %}
             </tbody>

@@ -1,19 +1,24 @@
+from collections import defaultdict
+
 from django.shortcuts import render
-from django.views.generic import ListView
 
-from rest_framework import viewsets
-
-from .models import Department, Kontakt, Subdivision
+from .models import Kontakt
 
 
 def index(request):
-    kontakts = Kontakt.objects.all()
-    departments = Department.objects.all()
-    subdivisions = Subdivision.objects.all()
-    template_name = 'phonebook/index.html'
-    context = {
-        'kontakts': kontakts,
-        'departments': departments,
-        'subdivisions': subdivisions
+    kontakts = Kontakt.objects.select_related('department', 'subdivision').all()
+    grouped_kontakts = defaultdict(lambda: defaultdict(list))
+    for kontakt in kontakts:
+        subdivision_title = kontakt.subdivision.title if kontakt.subdivision else ''
+        department_title = kontakt.department.title if kontakt.department else ''
+        grouped_kontakts[subdivision_title][department_title].append(kontakt)
+
+    grouped_kontakts = {
+        subdivision: dict(departments)
+        for subdivision, departments in grouped_kontakts.items()
     }
-    return render(request, template_name, context)
+
+    context = {
+        'grouped_kontakts': dict(grouped_kontakts),
+    }
+    return render(request, 'phonebook/phonebook.html', context)

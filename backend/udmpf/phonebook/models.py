@@ -46,7 +46,7 @@ class Kontakt(models.Model):
     )
     ip_number = models.IntegerField(
         'Стационарный Телефон',
-        blank=True
+        blank=True, null=True
     )
     phone_number = models.CharField(
         'Мобильный Номер',

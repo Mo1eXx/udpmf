@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Справочник
+{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <table id="phonebookTable" class="table">
+            <thead>
+                <tr>
+                    <th>Должность</th>
+                    <th>фамилия</th>
+                    <th>имя</th>
+                    <th>отчество</th>
+                    <th>номер</th>
+                    <th>мобильный</th>
+                    <th>почта</th>
+                </tr>
+            </thead>
+            <tbody>
+              {% for subdivision, departments in grouped_kontakts.items %}
+                <tr class="subdivision-row">
+                   <th colspan="7">
+                       <h2 class="subdivision">{{ subdivision }}</h2>
+                   </th>
+                </tr>
+                {% for department, kontakts in departments.items %}
+                  <tr class="department-row">
+                    <th colspan="7"><h3 class="department">{{ department }}</h3></th>
+                  </tr>
+                  {% for kontakt in kontakts %}
+                    <tr>
+                      <td class="capitalize">{{ kontakt.job_title }}</td>
+                      <td class="capitalize">{{ kontakt.last_name }}</td>
+                      <td class="capitalize">{{ kontakt.name }}</td>
+                      <td class="capitalize">{{ kontakt.s_name }}</td>
+                      <td class="capitalize">{{ kontakt.ip_number }}</td>
+                      <td class="capitalize">{{ kontakt.phone_number }}</td>
+                      <td class="e_mail">{{ kontakt.e_mail }}</td>
+                    </tr>
+                  {% endfor %}
+                {% endfor %}
+              {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
