@@ -11,11 +11,14 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-&4dqo!$lklar&q6z4_jthm64@w$^zcx%s)t1)94j-g@$_trzgc'
+SECRET_KEY = os.getenv('SECRET_KEY', get_random_secret_key())
 
-DEBUG = True
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv(
+    'ALLOWED_HOSTS',
+    'localhost, 127.0.0.1'
+).split(', ')
 
 include(
     'components/apps.py',

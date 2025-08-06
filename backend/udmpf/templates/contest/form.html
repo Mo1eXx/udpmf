@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Создание записи
+{% endblock %}
+
+{% block content %}
+  <div class="card">
+    <div style="padding: 2rem; width: 100%; max-width: 500px;">
+
+      {% if '/edit/' in request.path %}
+
+        <div class="delete">
+          <a href="{% url 'contest:delete' form.instance.pk %}">Удалить</a>
+        </div>
+        <h2 style="margin-bottom: 1.5rem; text-align: center;">Редактирование</h2>
+
+      {% else%}
+
+        <h2 style="margin-bottom: 1.5rem; text-align: center;">Новая запись</h2>
+
+      {% endif %}
+      <form method="post" novalidate>
+        {% csrf_token %}
+          {% for field in form %}
+            <div style="margin-bottom: 1rem;">
+              {{ field.label_tag }}
+              <br>
+              {{ field }}
+              {% if field.help_text %}
+                <small style="color: #666;">{{ field.help_text }}</small>
+              {% endif %}
+              {% for error in field.errors %}
+                <div style="color: red; font-size: 0.9em;">{{ error }}</div>
+              {% endfor %}
+            </div>
+          {% endfor %}
+          <div style="text-align: center;">
+            <input type="submit" value="Сохранить" style="padding: 0.5rem 1.5rem; cursor: pointer; font-size: 1rem;">
+          </div>
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

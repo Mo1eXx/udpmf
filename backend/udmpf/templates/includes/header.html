@@ -1,4 +1,15 @@
 {% load static %}
 <header class="header">
-    <h1>справочник</h1>
+  <nav class="nav-links">
+    <ul>
+      <li class="{% if request.path == '/' %}active{% endif %}">
+        <a href="{% url 'phonebook:index' %}">Домашняя страница</a>
+      </li>
+      <li class="{% if request.path == '/contest/' %}active{% endif %}">
+        <a href="{% url 'contest:create' %}">Новый контакт</a>
+      </li>
+    </ul>
+  </nav>
+  <h1 class="header-title">справочник</h1>
+  <div class="header-right"></div>
 </header>
