@@ -41,10 +41,23 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = 'static/'
+STATIC_URL = '/staticfiles/'
+
+STATIC_ROOT = Path('/backend_static')
+
+# STATIC_URL = '/static/'
+#
+# STATIC_ROOT = BASE_DIR / 'collected_static'
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://127.0.0.1:8000',
+    'http://localhost:8000',
+]
+
