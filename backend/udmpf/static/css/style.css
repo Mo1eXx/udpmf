@@ -35,7 +35,7 @@ html, body {
 }
 
 .card {
-    margin: 1rem 20%;
+    margin: 1rem 5%;
     border: 1px solid;
     border-radius: 8px;
     display: flex;

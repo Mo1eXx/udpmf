@@ -54,7 +54,7 @@ class Kontakt(models.Model):
     )
     job_title = models.CharField(
         'Должность',
-        max_length=64
+        max_length=128
     )
     ip_number = models.IntegerField(
         'Стационарный Телефон',
@@ -63,7 +63,7 @@ class Kontakt(models.Model):
     phone_number = models.CharField(
         'Мобильный Номер',
         unique=True,
-        max_length=11, blank=True, null=True
+        max_length=64, blank=True, null=True
     )
     e_mail = models.EmailField(
         'Почта',
@@ -83,6 +83,10 @@ class Kontakt(models.Model):
         Subdivision,
         on_delete=models.SET_NULL, null=True, blank=True,
         related_name='kontakt_subdivision', verbose_name='Подразделение'
+    )
+    output_order = models.PositiveSmallIntegerField(
+        default=100,
+        verbose_name='Порядок вывода'
     )
 
     class Meta:
