@@ -34,6 +34,15 @@ html, body {
     text-transform: uppercase;
 }
 
+.header-info {
+    display: flex;
+    justify-content: end;
+    text-transform: None;
+    margin-bottom: 1em;
+    color: navy;
+    font-weight: 600;
+}
+
 .card {
     margin: 1rem 5%;
     border: 1px solid;

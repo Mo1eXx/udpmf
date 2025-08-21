@@ -11,7 +11,7 @@ class PhonebookListView(ListView):
 
     def get_queryset(self):
         return Kontakt.objects.select_related('department', 'subdivision').order_by(
-            '-subdivision__output_order', '-department__output_order',
+            '-subdivision__output_order', '-department__output_order', '-output_order'
         )
 
     def get_context_data(self, **kwargs):

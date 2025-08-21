@@ -56,13 +56,13 @@ class Kontakt(models.Model):
         'Должность',
         max_length=128
     )
-    ip_number = models.IntegerField(
-        'Стационарный Телефон',
-        blank=True, null=True
+    ip_number = models.CharField(
+        'Стационарный телефон',
+        max_length=64, blank=True, null=True
     )
     phone_number = models.CharField(
         'Мобильный Номер',
-        unique=True,
+        #unique=True,
         max_length=64, blank=True, null=True
     )
     e_mail = models.EmailField(

@@ -33,8 +33,8 @@ class KontaktAdmin(admin.ModelAdmin):
     list_display = (
         'last_name', 'name', 's_name', 'ip_number',
         'phone_number', 'job_title',
-        'e_mail', 'department', 'subdivision'
+        'e_mail', 'output_order', 'department', 'subdivision'
     )
     list_filter = ('department', 'subdivision')
-    list_editable = ('department', 'subdivision')
+    list_editable = ('department', 'subdivision', 'output_order')
 

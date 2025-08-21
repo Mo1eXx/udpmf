@@ -7,4 +7,4 @@ class ContestForm(forms.ModelForm):
 
     class Meta:
         model = Kontakt
-        fields = '__all__'
+        exclude = ('created_at', 'output_order')

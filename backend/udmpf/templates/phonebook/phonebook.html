@@ -38,13 +38,13 @@
                   {% for kontakt in kontakts %}
                     <tr>
 
-                      <td class="capitalize">{{ kontakt.job_title }}</td>
-                      <td class="capitalize">{{ kontakt.last_name }}</td>
-                      <td class="capitalize">{{ kontakt.name }}</td>
-                      <td class="capitalize">{{ kontakt.s_name }}</td>
-                      <td class="capitalize">{{ kontakt.ip_number }}</td>
-                      <td class="capitalize">{{ kontakt.phone_number }}</td>
-                      <td class="e_mail">{{ kontakt.e_mail }}</td>
+                      <td class="capitalize">{{ kontakt.job_title|default_if_none:"&mdash;" }}</td>
+                      <td class="capitalize">{{ kontakt.last_name|default_if_none:"&mdash;" }}</td>
+                      <td class="capitalize">{{ kontakt.name|default_if_none:"&mdash;" }}</td>
+                      <td class="capitalize">{{ kontakt.s_name|default_if_none:"&mdash;" }}</td>
+                      <td class="capitalize">{{ kontakt.ip_number|default_if_none:"&mdash;" }}</td>
+                      <td class="capitalize">{{ kontakt.phone_number|default_if_none:"&mdash;" }}</td>
+                      <td class="e_mail">{{ kontakt.e_mail|default_if_none:"&mdash;" }}</td>
                       <td>
                       <a class="edit" href="{% url 'contest:edit' kontakt.id %}"
                          style="border: 2px solid;
