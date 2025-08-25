@@ -47,11 +47,12 @@
                       <td class="e_mail">{{ kontakt.e_mail|default_if_none:"&mdash;" }}</td>
                       <td>
                       <a class="edit" href="{% url 'contest:edit' kontakt.id %}"
-                         style="border: 2px solid;
+                         style="border: 2px solid orange;
                          border-radius: 20%;">
-                        <img src="{% static 'media/f.png' %}"
+                         {{ "&#128396;" }}
+                        <!--<img src="{% static 'media/f.png' %}"
                              width="30"
-                             height="30">
+                             height="30">-->
                       </a>
                       </td>
                     </tr>

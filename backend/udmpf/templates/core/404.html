@@ -1,9 +1,20 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block title %}Custom 404{% endblock %}
 
 {% block content %}
-  <h1>404</h1>
-  <p>Такой страницы нет.</p>
-  <a href="{% url 'phonebook:index' %}">Вернуться на главную</a>
+<div class="container-found">
+  <div class="not-found">
+    <div class="center">
+      <h1>404</h1>
+      <p>Здесь ничего нет!</p>
+
+      <a class="go-home" href="{% url 'phonebook:index' %}">
+        Вернуться на главную
+      </a>
+    </div>
+  </div>
+</div>
 {% endblock %}
