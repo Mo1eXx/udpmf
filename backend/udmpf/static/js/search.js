@@ -1,83 +1,73 @@
-const input = document.querySelector('input[type="text"]');
-const table = document.getElementById('phonebookTable');
+// Предположим, что у вас есть поле поиска с id="searchInput"
+document.addEventListener('DOMContentLoaded', function() {
+  const input = document.getElementById('searchInput'); // замените на правильный id
+  const table = document.getElementById('phonebookTable');
 
-input.addEventListener('input', filterTable);
+  input.addEventListener('input', function() {
+    filterTable();
+  });
 
-function filterTable() {
-  const filter = input.value.toLowerCase();
-  const rows = Array.from(table.tBodies[0].rows);
+  function filterTable() {
+    const filter = input.value.toLowerCase();
+    const rows = Array.from(table.tBodies[0].rows);
 
-  let currentSubdivisionRow = null;
-  let currentDepartmentRow = null;
+    let currentSubdivision = null;
+    let currentDepartment = null;
 
-  // Объявляем переменные для хранения совпадений
-  let subdivisionHasMatch = false;
-  let departmentHasMatch = false;
+    // Сначала скрываем все строки
+    rows.forEach(row => (row.style.display = 'none'));
 
-  // Сначала скрываем все строки
-  rows.forEach(row => (row.style.display = 'none'));
+    for (let row of rows) {
+      if (row.classList.contains('subdivision-row')) {
+        // Это заголовок подразделения
+        const subdivisionHeader = row.querySelector('h2.subdivision');
+        const subdivisionName = subdivisionHeader ? subdivisionHeader.textContent.toLowerCase() : '';
 
-  // Перебираем строки для определения совпадений
-  for (let row of rows) {
-    const th = row.querySelector('th[colspan="7"]');
+        // Проверяем совпадение
+        const matchSubdivision = subdivisionName.includes(filter);
+        // Запоминаем состояние
+        currentSubdivision = {
+          row: row,
+          match: matchSubdivision
+        };
 
-    if (th) {
-      // Заголовки подразделений или отделов
-      const subdivisionH2 = th.querySelector('h2.subdivision');
-      const departmentH3 = th.querySelector('h3.department');
-
-      if (subdivisionH2) {
-        // Обработка подразделения
-        // Показываем предыдущие подразделения, если у них есть совпадения
-        if (currentSubdivisionRow && subdivisionHasMatch) {
-          currentSubdivisionRow.style.display = '';
-        }
-        // Обновляем текущий подраздел
-        currentSubdivisionRow = row;
-        // Проверяем совпадение подразделения
-        subdivisionHasMatch = subdivisionH2.textContent.toLowerCase().includes(filter);
-        // Показываем или скрываем текущий заголовок
-        row.style.display = subdivisionHasMatch ? '' : 'none';
+        // Показываем заголовок, если есть совпадение
+        row.style.display = matchSubdivision ? '' : 'none';
 
         // Обнуляем отдел
-        currentDepartmentRow = null;
-        departmentHasMatch = false;
-
-      } else if (departmentH3) {
-        // Обработка отдела
-        if (currentDepartmentRow && departmentHasMatch) {
-          currentDepartmentRow.style.display = '';
-        }
-        currentDepartmentRow = row;
-        departmentHasMatch = departmentH3.textContent.toLowerCase().includes(filter);
-        row.style.display = departmentHasMatch ? '' : 'none';
-
+        currentDepartment = null;
+        continue;
       }
-      continue; // Переходим к следующей строке
+
+      if (row.classList.contains('department-row')) {
+        // Это заголовок отдела
+        const departmentHeader = row.querySelector('h3.department');
+        const departmentName = departmentHeader ? departmentHeader.textContent.toLowerCase() : '';
+
+        const matchDepartment = departmentName.includes(filter);
+        currentDepartment = {
+          row: row,
+          match: matchDepartment
+        };
+
+        row.style.display = matchDepartment ? '' : 'none';
+
+        continue;
+      }
+
+      // Это строка с контактом
+      const text = row.textContent.toLowerCase();
+
+      // Показываем, если:
+      // - контакт совпадает
+      // - или внутри выбранного подразделения или отдела
+      if (
+        text.includes(filter) ||
+        (currentSubdivision && currentSubdivision.match) ||
+        (currentDepartment && currentDepartment.match)
+      ) {
+        row.style.display = '';
+      }
     }
-
-    // Строки с контактами
-    const text = row.textContent.toLowerCase();
-
-    // Решение: показываем строку, если:
-    // - она совпадает с фильтром
-    // - или у подразделения или отдела есть совпадения
-    if (
-      text.includes(filter) ||
-      subdivisionHasMatch ||
-      departmentHasMatch
-    ) {
-      row.style.display = '';
-    } else {
-      row.style.display = 'none';
-    }
   }
-
-  // После прохода показываем все заголовки подразделений и отделов с совпадениями
-  if (currentDepartmentRow && departmentHasMatch) {
-    currentDepartmentRow.style.display = '';
-  }
-  if (currentSubdivisionRow && subdivisionHasMatch) {
-    currentSubdivisionRow.style.display = '';
-  }
-}
+});
