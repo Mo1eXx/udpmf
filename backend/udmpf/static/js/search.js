@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const filter = input.value.toLowerCase();
     const rows = Array.from(table.tBodies[0].rows);
 
+
     let currentSubdivision = null;
     let currentDepartment = null;
 
@@ -69,5 +70,5 @@ document.addEventListener('DOMContentLoaded', function() {
         row.style.display = '';
       }
     }
-  }
+  };
 });

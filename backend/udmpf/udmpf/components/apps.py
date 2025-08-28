@@ -8,4 +8,5 @@ INSTALLED_APPS = [
     'phonebook',
     'contest',
     'core',
+    'sources',
 ]

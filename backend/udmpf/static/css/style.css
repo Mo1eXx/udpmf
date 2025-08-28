@@ -65,7 +65,7 @@ html, body {
 }
 
 .header {
-    background-color: orange;
+    background: orange;
     color: white;
     padding: 1rem 2rem;
     text-transform: uppercase;
@@ -270,4 +270,15 @@ form input[type="submit"]:hover {
 .delete a:hover {
     background-color: #cc7a00;
     cursor: pointer;
+}
+
+.source-list {
+    display: dlock;
+    border: 1px solid;
+
+}
+
+.source-card {
+    display: flex;
+    justify-content: center;
 }

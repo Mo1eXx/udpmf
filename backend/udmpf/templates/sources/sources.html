@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+    Информационные активы
+{% endblock %}
+
+{% block content %}
+    <div class="container_search">
+        {% include "includes/search.html" %}
+    </div>
+    <div class="card">
+        <table id="phonebookTable" class="table">
+            <thead>
+                <tr>
+                    <th>Наименование информационного актива</th>
+                    <th>Описание актива</th>
+                    <th>Владелец актива</th>
+                    <th>Должность</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in source_list %}
+                    <tr>
+                        <td>{{ item.title|default_if_none:"&mdash;" }}</td>
+                        <td>{{ item.description|default_if_none:"&mdash;" }}</td>
+                        <td>{{ item.owner|default_if_none:"&mdash;" }}</td>
+                        <td>{{ item.owner.job_title|default_if_none:"&mdash;" }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
