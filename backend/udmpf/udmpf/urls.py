@@ -7,6 +7,7 @@ urlpatterns = [
     path('contest/', include('contest.urls', namespace='contest')),
     path('sources/', include('sources.urls', namespace='sources')),
     path('admin/', admin.site.urls),
+    path('auth/', include('django.contrib.auth.urls')),
 ]
 
 handler404 = 'core.views.page_not_found'

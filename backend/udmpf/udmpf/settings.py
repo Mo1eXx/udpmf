@@ -61,4 +61,4 @@ CSRF_TRUSTED_ORIGINS = [
     'http://localhost:8000',
 ]
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'phonebook:index'
