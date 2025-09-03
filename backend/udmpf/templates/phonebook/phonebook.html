@@ -15,6 +15,14 @@
             <thead>
                 <tr>
                     <th>Должность</th>
+                    <th>ФИО</th>
+                    <th>номер</th>
+                    <th>мобильный</th>
+                    <th>почта</th>
+                    <th></th>
+                </tr>
+                <!--<tr>
+                    <th>Должность</th>
                     <th>фамилия</th>
                     <th>имя</th>
                     <th>отчество</th>
@@ -22,7 +30,7 @@
                     <th>мобильный</th>
                     <th>почта</th>
                     <th></th>
-                </tr>
+                </tr>-->
             </thead>
             <tbody>
               {% for subdivision, departments in grouped_kontakts.items %}
@@ -37,11 +45,15 @@
                   </tr>
                   {% for kontakt in kontakts %}
                     <tr>
-
                       <td class="capitalize">{{ kontakt.job_title|default_if_none:"&mdash;" }}</td>
-                      <td class="capitalize">{{ kontakt.last_name|default_if_none:"&mdash;" }}</td>
+                      <!--<td class="capitalize">{{ kontakt.last_name|default_if_none:"&mdash;" }}</td>
                       <td class="capitalize">{{ kontakt.name|default_if_none:"&mdash;" }}</td>
-                      <td class="capitalize">{{ kontakt.s_name|default_if_none:"&mdash;" }}</td>
+                      <td class="capitalize">{{ kontakt.s_name|default_if_none:"&mdash;" }}</td>-->
+                      {% if kontakt.s_name == None %}
+                        <td class="capitalize">{{ kontakt.last_name }} {{ kontakt.name }}</td>
+                      {% else %}
+                        <td class="capitalize">{{ kontakt|default_if_none:"&mdash;" }}</td>
+                      {% endif %}
                       <td class="capitalize">{{ kontakt.ip_number|default_if_none:"&mdash;" }}</td>
                       <td class="capitalize">{{ kontakt.phone_number|default_if_none:"&mdash;" }}</td>
                       <td class="e_mail">{{ kontakt.e_mail|default_if_none:"&mdash;" }}</td>
@@ -51,6 +63,7 @@
                          border-radius: 20%;">
                          {{ "&#128396;" }}
                       </a>
+                      <!--<a href="myapp://upf-upf-pc004:5900">Открыть</a>-->
                       </td>
                     </tr>
                   {% endfor %}

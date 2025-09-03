@@ -67,7 +67,7 @@ html, body {
 .header {
     background: orange;
     color: white;
-    padding: 1rem 2rem;
+    padding: 1rem 1.2rem;
     text-transform: uppercase;
 }
 
@@ -82,11 +82,18 @@ html, body {
 
 .card {
     margin: 1rem 5%;
-    border: 1px solid;
+    border: 1px solid orange;
     border-radius: 8px;
     display: flex;
     justify-content: center;
     background-color: white;
+    box-shadow: 2px 2px 10px orange;
+}
+
+.active-tr:hover {
+    background: rgb(180 220 255);
+    color: rgb(170 10 20);
+    transition: all .13s ease-out;
 }
 
 .content {
@@ -123,7 +130,14 @@ html, body {
 
 input.text {
     width: 35em;
-    font-size: 20px;
+    font-size: 22px;
+    border: 1px solid orange;
+    border-radius: 5px;
+
+}
+
+input.text:focus {
+    outline-color: orange;
 }
 
 button.search {
@@ -215,7 +229,7 @@ form input[type="submit"]:hover {
 }
 
 .nav-links ul li a {
-    margin-right: 2rem;
+    margin-right: 0;
 }
 
 .nav-links a {
@@ -238,7 +252,7 @@ form input[type="submit"]:hover {
 .nav-links li.active a {
     border: 2px solid;
     border-radius: 8px;
-    padding: 3px 8px;
+    padding: 6px 8px;
 }
 
 .edit {

@@ -61,3 +61,4 @@ CSRF_TRUSTED_ORIGINS = [
     'http://localhost:8000',
 ]
 
+LOGIN_REDIRECT_URL = '/'

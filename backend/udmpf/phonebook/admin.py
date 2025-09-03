@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from .models import Department, Kontakt, Subdivision
+from phonebook.models import Department, Kontakt, Subdivision
+from sources.admin import SourcesInline
 
 
 class KontaktInline(admin.TabularInline):
@@ -24,6 +25,7 @@ class SubdivisionAdmin(admin.ModelAdmin):
 
 @admin.register(Kontakt)
 class KontaktAdmin(admin.ModelAdmin):
+    inlines = (SourcesInline,)
     readonly_fields = ('created_at',)
     list_display_links = ('last_name', 'name', 's_name')
     search_fields = (

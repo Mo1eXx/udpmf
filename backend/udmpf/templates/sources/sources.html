@@ -22,7 +22,7 @@
             </thead>
             <tbody>
                 {% for item in source_list %}
-                    <tr>
+                    <tr class="active-tr">
                         <td>{{ item.title|default_if_none:"&mdash;" }}</td>
                         <td>{{ item.description|default_if_none:"&mdash;" }}</td>
                         <td>{{ item.owner|default_if_none:"&mdash;" }}</td>

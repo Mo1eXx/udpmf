@@ -8,6 +8,9 @@
       <li class="{% if request.path == '/contest/' %}active{% endif %}">
         <a href="{% url 'contest:create' %}">Новый контакт</a>
       </li>
+      <li class="{% if request.path == '/sources/' %}active{% endif %}">
+        <a href="{% url 'sources:index' %}">Информационные активы</a>
+      </li>
     </ul>
   </nav>
   <div>
