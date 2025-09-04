@@ -50,7 +50,7 @@
                       {% if user.is_authenticated %}
                         {% if kontakt.pc_number != None %}
                         <td class="pc_number">
-                            <a href="myapp://{{ kontakt.pc_number }}">{{ kontakt.pc_number }}</a>
+                            <a href="myapp://{{ kontakt.pc_number }}:5900">{{ kontakt.pc_number }}</a>
                         </td>
                         {% else %}
                             <td>{{ "&mdash;" }}</td>
