@@ -9,4 +9,5 @@ INSTALLED_APPS = [
     'contest',
     'core',
     'sources',
+    'userProfile',
 ]

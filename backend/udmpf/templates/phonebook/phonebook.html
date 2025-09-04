@@ -19,18 +19,11 @@
                     <th>номер</th>
                     <th>мобильный</th>
                     <th>почта</th>
+                    {% if user.is_authenticated %}
+                        <th>Компютер</th>
+                    {% endif %}
                     <th></th>
                 </tr>
-                <!--<tr>
-                    <th>Должность</th>
-                    <th>фамилия</th>
-                    <th>имя</th>
-                    <th>отчество</th>
-                    <th>номер</th>
-                    <th>мобильный</th>
-                    <th>почта</th>
-                    <th></th>
-                </tr>-->
             </thead>
             <tbody>
               {% for subdivision, departments in grouped_kontakts.items %}
@@ -46,9 +39,6 @@
                   {% for kontakt in kontakts %}
                     <tr>
                       <td class="capitalize">{{ kontakt.job_title|default_if_none:"&mdash;" }}</td>
-                      <!--<td class="capitalize">{{ kontakt.last_name|default_if_none:"&mdash;" }}</td>
-                      <td class="capitalize">{{ kontakt.name|default_if_none:"&mdash;" }}</td>
-                      <td class="capitalize">{{ kontakt.s_name|default_if_none:"&mdash;" }}</td>-->
                       {% if kontakt.s_name == None %}
                         <td class="capitalize">{{ kontakt.last_name }} {{ kontakt.name }}</td>
                       {% else %}
@@ -57,13 +47,21 @@
                       <td class="capitalize">{{ kontakt.ip_number|default_if_none:"&mdash;" }}</td>
                       <td class="capitalize">{{ kontakt.phone_number|default_if_none:"&mdash;" }}</td>
                       <td class="e_mail">{{ kontakt.e_mail|default_if_none:"&mdash;" }}</td>
+                      {% if user.is_authenticated %}
+                        {% if kontakt.pc_number != None %}
+                        <td class="pc_number">
+                            <a href="myapp://{{ kontakt.pc_number }}">{{ kontakt.pc_number }}</a>
+                        </td>
+                        {% else %}
+                            <td>{{ "&mdash;" }}</td>
+                        {% endif %}
+                      {% endif %}
                       <td>
                       <a class="edit" href="{% url 'contest:edit' kontakt.id %}"
                          style="border: 2px solid orange;
                          border-radius: 20%;">
                          {{ "&#128396;" }}
                       </a>
-                      <!--<a href="myapp://upf-upf-pc004:5900">Открыть</a>-->
                       </td>
                     </tr>
                   {% endfor %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+        <div class="profile">
+            <div class="profile-info">
+                <table class="profile-table">
+                    <tbody>
+                        <tr>
+                            <td>Логин:</td>
+                            <td>{{ user.username }}</td>
+                        </tr>
+
+                        <tr>
+                            <td>Имя:</td>
+                            <td>{{ user.first_name }}</td>
+                        </tr>
+                        <tr>
+                            <td>Фамилия:</td>
+                            <td>{{ user.last_name }}</td>
+                        </tr>
+                        <tr>
+                            <td>Почта:</td>
+                            <td>{{ user.email }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% else %}
+        <p>Необходимо авторизоваться.</p>
+    {% endif %}
+{% endblock %}

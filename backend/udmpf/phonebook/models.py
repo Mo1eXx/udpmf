@@ -88,6 +88,10 @@ class Kontakt(models.Model):
         default=100,
         verbose_name='Порядок вывода'
     )
+    pc_number = models.CharField(
+        'Номер ПК',
+        blank=True, null=True
+    )
 
     class Meta:
         verbose_name = 'контакт'

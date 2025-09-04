@@ -15,18 +15,6 @@ html, body {
     flex-direction: column;
 }
 
-/* .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: orange;
-    color: white;
-    height: 10rem;
-    padding: 0 2rem;
-    text-transform: uppercase;
-    position: relative;
-} */
-
 .container-found {
     display: flex;
     justify-content: center;
@@ -218,6 +206,10 @@ form input[type="submit"]:hover {
     cursor: pointer;
 }
 
+.nav-links {
+    display: flex;
+    justify-content: space-between;
+}
 
 .nav-links ul {
     list-style: none;
@@ -230,6 +222,15 @@ form input[type="submit"]:hover {
 
 .nav-links ul li a {
     margin-right: 0;
+}
+
+.lef-nav {
+    display: flex;
+}
+
+.right-nav {
+    display: flex;
+    justify-content: flex-end;
 }
 
 .nav-links a {
@@ -295,4 +296,43 @@ form input[type="submit"]:hover {
 .source-card {
     display: flex;
     justify-content: center;
+}
+
+.profile {
+    display: flex;
+    justify-content: center;
+}
+
+.profile-info {
+    margin-top: 4em;
+    border: 1px solid orange;
+    background: white;
+    min-width: 300px;
+    font-size: 20px;
+    text-align: center;
+    padding: 1em 2em;
+}
+
+.profile-table {
+    display: flex;
+    justify-content: center;
+    border-collapse: collapse;
+    line-height: 2;
+}
+
+.profile-table tbody tr {
+    border-bottom: 1px solid black;
+}
+
+.pc_number a {
+    text-decoration: none;
+    color: green;
+    border: 1px solid green;
+    border-radius: 10px;
+    padding: 6px 13px;
+}
+
+.pc_number a:hover {
+    cursor: pointer;
+    box-shadow: 1px 2px 10px green;
 }

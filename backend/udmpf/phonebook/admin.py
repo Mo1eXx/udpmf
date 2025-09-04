@@ -30,11 +30,11 @@ class KontaktAdmin(admin.ModelAdmin):
     list_display_links = ('last_name', 'name', 's_name')
     search_fields = (
         'name', 's_name', 'last_name', 'ip_number',
-        'phone_number', 'e_mail', 'job_title'
+        'pc_number', 'phone_number', 'e_mail', 'job_title'
     )
     list_display = (
         'last_name', 'name', 's_name', 'ip_number',
-        'phone_number', 'job_title',
+        'phone_number', 'job_title', 'pc_number',
         'e_mail', 'output_order', 'department', 'subdivision'
     )
     list_filter = ('department', 'subdivision')
